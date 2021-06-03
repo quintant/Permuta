@@ -2499,3 +2499,66 @@ def test_count_bounces():
     assert Perm((4, 5, 2, 0, 3, 1)).count_bounces() == 2
     assert Perm((4, 5, 3, 1, 0, 2)).count_bounces() == 1
     assert Perm((5, 0, 1, 3, 4, 2)).count_bounces() == 4
+
+
+def test_count_successions():
+    assert Perm(()).count_successions() == 0
+    assert Perm((0,)).count_successions() == 0
+    assert Perm((0, 1)).count_successions() == 1
+    assert Perm((1, 0)).count_successions() == 0
+    assert Perm((0, 1, 2)).count_successions() == 2
+    assert Perm((0, 2, 1)).count_successions() == 0
+    assert Perm((1, 0, 2)).count_successions() == 0
+    assert Perm((1, 2, 0)).count_successions() == 1
+    assert Perm((2, 0, 1)).count_successions() == 1
+    assert Perm((2, 1, 0)).count_successions() == 0
+    assert Perm((1, 0, 3, 2, 4)).count_successions() == 0
+    assert Perm((3, 2, 1, 0, 4)).count_successions() == 0
+    assert Perm((0, 2, 1, 4, 3, 5)).count_successions() == 0
+    assert Perm((0, 4, 3, 2, 1, 5)).count_successions() == 0
+    assert Perm((1, 2, 0, 4, 3, 5)).count_successions() == 1
+    assert Perm((1, 4, 3, 2, 0, 5)).count_successions() == 0
+    assert Perm((2, 1, 0, 4, 3, 5)).count_successions() == 0
+    assert Perm((2, 4, 3, 1, 0, 5)).count_successions() == 0
+    assert Perm((3, 1, 0, 4, 2, 5)).count_successions() == 0
+    assert Perm((3, 4, 2, 1, 0, 5)).count_successions() == 1
+    assert Perm((4, 1, 0, 3, 2, 5)).count_successions() == 0
+    assert Perm((4, 3, 2, 1, 0, 5)).count_successions() == 0
+    assert Perm((5, 1, 0, 3, 2, 4)).count_successions() == 0
+    assert Perm((5, 3, 2, 1, 0, 4)).count_successions() == 0
+    assert Perm((0, 1, 3, 2, 5, 4, 6)).count_successions() == 1
+    assert Perm((0, 1, 5, 4, 3, 2, 6)).count_successions() == 1
+    assert Perm((0, 2, 3, 1, 5, 4, 6)).count_successions() == 1
+    assert Perm((0, 2, 5, 4, 3, 1, 6)).count_successions() == 0
+    assert Perm((0, 3, 2, 1, 5, 4, 6)).count_successions() == 0
+    assert Perm((0, 3, 5, 4, 2, 1, 6)).count_successions() == 0
+    assert Perm((2, 0, 1, 3, 4, 5, 6)).count_successions() == 4
+    assert Perm((5, 1, 4, 3, 2, 0, 6)).count_successions() == 0
+    assert Perm((5, 4, 6, 3, 2, 1, 7, 0)).count_successions() == 0
+    assert Perm((7, 1, 0, 2, 3, 4, 5, 6)).count_successions() == 4
+    assert Perm((3, 2, 1, 0, 7, 6, 5, 4)).count_successions() == 0
+    assert Perm((7, 2, 1, 4, 3, 6, 5, 0)).count_successions() == 0
+    assert Perm((2, 0, 1, 5, 6, 3, 7, 4)).count_successions() == 2
+    assert Perm((0, 5, 6, 1, 2, 3, 4, 7)).count_successions() == 4
+    assert Perm((7, 2, 1, 5, 6, 3, 4, 0)).count_successions() == 2
+    assert Perm((7, 4, 6, 3, 1, 0, 5, 2)).count_successions() == 0
+    assert Perm((3, 2, 4, 1, 6, 0, 7, 5)).count_successions() == 0
+    assert Perm((1, 0, 7, 3, 6, 4, 5, 2)).count_successions() == 1
+    assert Perm((4, 7, 5, 6, 3, 2, 1, 0)).count_successions() == 1
+    assert Perm((6, 4, 1, 7, 2, 3, 5, 0)).count_successions() == 1
+    assert Perm((4, 3, 1, 7, 6, 0, 5, 2)).count_successions() == 0
+    assert Perm((5, 4, 1, 0, 6, 2, 7, 3)).count_successions() == 0
+    assert Perm((5, 2, 6, 4, 1, 7, 3, 0)).count_successions() == 0
+    assert Perm((7, 0, 4, 5, 3, 2, 1, 6)).count_successions() == 1
+    assert Perm((6, 5, 0, 2, 4, 7, 3, 1)).count_successions() == 0
+    assert Perm((6, 0, 4, 3, 7, 1, 5, 2)).count_successions() == 0
+    assert Perm((7, 0, 1, 2, 3, 4, 5, 6, 8)).count_successions() == 6
+    assert Perm((3, 1, 4, 0, 2, 5, 6, 7, 8)).count_successions() == 3
+    assert Perm((8, 6, 4, 9, 2, 7, 1, 5, 0, 3)).count_successions() == 0
+    assert Perm((8, 4, 9, 1, 5, 6, 0, 2, 3, 7)).count_successions() == 2
+    assert Perm((9, 6, 7, 8, 0, 1, 2, 3, 4, 5)).count_successions() == 7
+    assert Perm((9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 10)).count_successions() == 8
+    assert Perm((9, 8, 3, 2, 5, 4, 7, 6, 1, 0, 11, 10)).count_successions() == 0
+    assert Perm((2, 3, 5, 9, 10, 11, 0, 1, 4, 6, 7, 8)).count_successions() == 6
+    assert Perm((3, 2, 1, 0, 5, 4, 11, 8, 7, 10, 9, 6)).count_successions() == 0
+    assert Perm((11, 2, 1, 10, 9, 6, 5, 8, 7, 4, 3, 0)).count_successions() == 0

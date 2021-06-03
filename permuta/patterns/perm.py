@@ -899,6 +899,12 @@ class Perm(TupleType, Patt):
 
     num_ascents = count_ascents
 
+    def count_successions(self) -> int:
+        """Returns the number of successions of the permutation."""
+        return self.count_ascents(step_size=1)
+
+    num_successions = count_successions
+
     def peaks(self) -> Iterator[int]:
         """Yield the indices of the peaks of self. The i-th element of a perm is a peak
         if self[i-1] < self[i] > self[i+1].

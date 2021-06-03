@@ -42,6 +42,7 @@ class PermutationStatistic:
         ("Longest decreasing subsequence", Perm.length_of_longestrun_descending),
         ("Depth", Perm.depth),
         ("Number of bounces", Perm.count_bounces),
+        ("Number of successions", Perm.count_successions),
     )
 
     @staticmethod
