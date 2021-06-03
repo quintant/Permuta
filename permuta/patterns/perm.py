@@ -900,7 +900,9 @@ class Perm(TupleType, Patt):
     num_ascents = count_ascents
 
     def count_successions(self) -> int:
-        """Returns the number of successions of the permutation."""
+        """Returns the number of successions of the permutation.
+        See: https://www.findstat.org/StatisticsDatabase/St000441/
+        https://mathscinet.ams.org/mathscinet/search/publdoc.html?pg1=MR&s1=MR0013109"""
         return self.count_ascents(step_size=1)
 
     num_successions = count_successions
